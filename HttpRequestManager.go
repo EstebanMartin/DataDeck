@@ -9,6 +9,9 @@ type HttpRequestManager struct {
 	responder QueryResponder
 }
 
+//Obtains the parameters sent through the URL.
+//It gets the generated Json and writes it into the browser
+
 func (rm HttpRequestManager) songSearchHandler(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 	var m = make(map[string]string)
 	m["name"] = r.URL.Query().Get("name")
@@ -17,6 +20,8 @@ func (rm HttpRequestManager) songSearchHandler(ctx context.Context, w http.Respo
 	response := rm.responder.RespondSearchSongs(m)
 	w.Write(response)
 }
+
+//Sets the valid URL for the requests and starts the service
 
 func (rm HttpRequestManager) StartListen() {
 	mux := goji.NewMux()

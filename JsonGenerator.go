@@ -2,6 +2,8 @@ package main
 
 import "encoding/json"
 
+//Implements QueryResponder
+
 type JsonGenerator struct {
 	data DataInteractor
 }
